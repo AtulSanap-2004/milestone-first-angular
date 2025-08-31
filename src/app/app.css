@@ -1,0 +1,145 @@
+/* Sticky dark navbar */
+.navbar{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: var(--bg-dark-opaque);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand */
+.brand{
+  font-weight: 800;
+  font-size: 24px;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+}
+
+/* Desktop links */
+.nav-links{
+  display: flex;
+  gap: 26px;
+}
+.nav-links a{
+  color: var(--text);
+  font-weight: 600;
+  opacity: 0.95;
+}
+.nav-links a:hover{ color: var(--accent); }
+
+/* Hamburger (mobile) */
+.hamburger{
+  display: none;
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  cursor: pointer;
+}
+.hamburger span{
+  display: block;
+  width: 26px; height: 3px;
+  margin: 5px 0;
+  background: #fff;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+/* Hero */
+.hero{
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding-top: 64px; /* space for fixed navbar */
+
+  /* Option A: online photo (no asset needed) */
+  background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1920&auto=format&fit=crop');
+  /* Option B: local photo — put hero.jpg in src/assets and use this instead: */
+  /* background-image: url('/assets/hero.jpg'); */
+
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.35));
+}
+.hero-content{
+  position: relative;
+  max-width: 900px;
+  padding: 0 20px;
+}
+.hero h1{
+  font-size: clamp(28px, 5vw, 42px);
+  margin: 0 0 10px;
+  font-weight: 800;
+}
+.hero p{
+  font-size: clamp(16px, 2.5vw, 18px);
+  color: var(--muted);
+  margin: 0 0 24px;
+}
+.btn{
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--bg-dark-opaque);
+  color: #fff;
+  font-weight: 700;
+  border: 2px solid rgba(255,255,255,0.15);
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+.btn:hover{
+  transform: translateY(-1px);
+  background: #00000066;
+  border-color: var(--accent);
+}
+
+/* Stub sections just to allow scrolling targets */
+.section.stub{
+  min-height: 40vh;
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #e6eef9;
+}
+.section.stub h2{
+  margin-top: 0;
+  font-size: 28px;
+}
+
+/* Footer */
+.footer{
+  text-align: center;
+  padding: 24px 12px 36px;
+  color: #b8c1cc;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,0,0,0.2);
+}
+
+/* Responsive: collapse menu */
+@media (max-width: 900px){
+  .hamburger{ display: block; }
+  .nav-links{
+    position: absolute;
+    top: 60px; right: 12px; left: 12px;
+    background: var(--bg-dark-opaque);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 14px;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .navbar.open .nav-links{ display: flex; }
+}
